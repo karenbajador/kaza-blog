@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Grid } from 'react-bootstrap'
 import './Article.css'
-import FaAngleDoubleRight from 'react-icons/lib/fa/angle-double-right'
+
 
 export default class Article extends Component {
 

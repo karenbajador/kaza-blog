@@ -8,7 +8,7 @@ export default class About extends Component {
     console.log('Rendering About.')
     const page_title = 'About'
     return (
-      <div className='about-top-container-title'>{page_title}</div>
+      <div>{page_title}</div>
     )
   }
 }

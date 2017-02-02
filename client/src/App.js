@@ -1,7 +1,4 @@
 import React, { Component } from 'react'
-import { Router, Route, IndexRoute, Link, hashHistory } from 'react-router'
-import logo from './logo.svg'
-import headerLogo from './static/images/header.jpg'
 import { Menu, Footer } from './components'
 import './App.css'
 
