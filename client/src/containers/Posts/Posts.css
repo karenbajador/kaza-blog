@@ -38,13 +38,7 @@
     flex-flow: column;
 }
 
-.link-box {
-    /*background-color: pink;*/
-    align-self: flex-end;
-    padding: 5px;
-    font-size: 12px;
-    color: #bf6868;
-}
+
 
 .posts-article-title {
     /*background-color: white;*/
@@ -53,6 +47,9 @@
     margin-left: 20px;
 }
 
+.posts-article-title a {
+    color: black
+}
 
 .posts-text-title {
     font-weight: bold;

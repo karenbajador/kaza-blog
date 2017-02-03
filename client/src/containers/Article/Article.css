@@ -69,6 +69,27 @@
 }
 
 
+.tags {
+    text-align: left;
+    /*color: #69655d;*/
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.tag {
+    text-align: left;
+    /*color: #69655d;*/
+    font-size: 14px;
+    background-color: cadetblue;
+    padding: 4px 15px 4px 15px;
+    margin:  0px 5px 0px 5px;
+    color: #f2f2f2;
+    border-radius: 15px;
+}
+
+.tags  a {
+    text-decoration: none;
+}
 
 @media screen and (max-width: 768px) {
     .article-side {
