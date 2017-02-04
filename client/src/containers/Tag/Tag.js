@@ -10,9 +10,9 @@ export default class Tag extends Component {
     return (
       <div>
 
-        <div className='container'>
-          <div className='home-side' />
-          <div className='home-bodyContainer'>
+        <div className='container home'>
+          <div className='side' />
+          <div className='body column'>
 
             <div className='tags'>Tags   :
               <span className='tag'>Tag1</span>
@@ -22,7 +22,7 @@ export default class Tag extends Component {
             <Item />
             <Item />
           </div>
-          <div className='home-side' />
+          <div className='side' />
         </div>
         <div className='checkMore'>
           <Link to='/posts'>Check more posts <FaAngleDoubleRight/></Link>
