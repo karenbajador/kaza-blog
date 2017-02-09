@@ -3,13 +3,14 @@
 .container {
     display: flex;
     justify-content: space-between;
-    padding-top: 10px
+    padding-top: 10px;
+    /*background-color: yellow;*/
 }
 
 .article-side {
     /*background-color: #c71d1d;*/
     /*flex-grow: 1;*/
-    flex-basis: 100rem;
+    flex-basis: 20rem;
 }
 
 .article-bodyContainer {
@@ -22,7 +23,8 @@
 
 
 .article-date {
-    align-self: flex-end;
+    /*align-self: flex-end;*/
+    text-align: right;
 }
 
 .article-box {
@@ -55,7 +57,7 @@
     .article-side {
         /*background-color: #c71d1d;*/
         /*flex-grow: 1;*/
-        flex-basis: 30rem;
+        flex-basis: 5rem;
     }
 }
 

@@ -13,7 +13,7 @@
 }
 .home .side {
     /*background-color: #c71d1d;*/
-    flex-basis: 20rem;
+    flex-basis: 50rem;
 }
 
 .body {
@@ -28,7 +28,7 @@
 
 .item {
     /*background-color: #e7e9ea;*/
-    margin-bottom: 0px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
