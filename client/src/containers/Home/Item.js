@@ -1,7 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
+import HtmlToReact from 'html-to-react'
 import FaAngleDoubleRight from 'react-icons/lib/fa/angle-double-right'
 import './Home.css'
+
+
 
 export default class Item extends Component {
 
@@ -12,37 +15,45 @@ export default class Item extends Component {
     this.onLeave = this.onLeave.bind(this)
   }
 
+  static propTypes = {
+    data: PropTypes.object
+  }
+
+
   onHover() {
-    console.log('Hovered!')
     this.setState({hover: true})
   }
 
   onLeave() {
-    console.log('Left!')
     this.setState({hover: false})
   }
 
   render () {
 
+    const { data, max_words } = this.props
     const borderLeft = this.state.hover ? '2px solid crimson' : null
+
+    const htmlToReactParser = new HtmlToReact.Parser(React)
+
+    const bodyComponent = htmlToReactParser.parse(`<div>${data.body.split(' ').slice(0, max_words).join(' ')}</div>`)
 
     return (
         <div
           className='item'
-          style = {{'border-left': borderLeft}}
+          style = {{'borderLeft': borderLeft}}
           onMouseEnter={this.onHover}
           onMouseLeave={this.onLeave}
         >
           <div className='article' >
             <div className='title'>
-              <span className='text-title'>This is the title of the blog and it is very very long</span>
-              <span className='text-date'>14.Aug.2017</span>
+              <span className='text-title'>{data.title}</span>
+              <span className='text-date'>{data.date}</span>
             </div>
             <div className='excerpt'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              {bodyComponent}
             </div>
-            <div className='link' >
-              <Link to='/article/ivan-is-so-pogi'>Read more <FaAngleDoubleRight /></Link>
+            <div className='link'>
+              <Link to={`/article/${data.permalink}`}>Read more <FaAngleDoubleRight /></Link>
             </div>
           </div>
         </div>

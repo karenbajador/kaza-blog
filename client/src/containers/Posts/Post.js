@@ -8,15 +8,17 @@ export default class Post extends Component {
 
   render () {
 
+    const { data } = this.props
+
     return (
 
           <div className='post-item'>
             <span className='bullet'><FaAngleDoubleRight color='#bf6868'/></span>
             <div className='link-box'>
-              <Link to='/article/ivan-is-so-pogi'>
-                <span className='text-title'>This is the title of the blog and it is very very long.</span>
+              <Link to={`/article/${data.permalink}`}>
+                <span className='text-title'>{data.title}</span>
               </Link>
-              <span className='text-date'>14.Aug.2017</span>
+              <span className='text-date'>{data.date}</span>
             </div>
           </div>
 
