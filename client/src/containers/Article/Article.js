@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router'
+// import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import * as actions from '../../redux/actions'
 import './Article.css'
@@ -10,10 +10,10 @@ import HtmlToReact from 'html-to-react'
 
 class Article extends Component {
 
-  constructor(props) {
-    super(props)
-
-  }
+  // constructor(props) {
+  //   super(props)
+  //
+  // }
 
 
   static propTypes = {
@@ -31,12 +31,19 @@ class Article extends Component {
 
   render () {
 
-    const { article } = this.props
+    const { article, error } = this.props
 
 
     const htmlToReactParser = new HtmlToReact.Parser(React)
 
-    const reactComponent = article ? htmlToReactParser.parse(article.body) : null
+    const reactComponent = article ? htmlToReactParser.parse(`<div>${article.body}</div>`) : null
+
+    const errorDisplay = (
+      <div>
+        <h1>Whoooops!!!</h1>
+        <p>{error}</p>
+      </div>
+    )
 
 
     return (
@@ -45,6 +52,8 @@ class Article extends Component {
       <div className='container'>
         <div className='article-side' />
         <div className='article-bodyContainer'>
+
+
 
           {
             (article)
@@ -66,7 +75,7 @@ class Article extends Component {
                     </div>
                   </div>
                 )
-              : null
+              : errorDisplay
           }
 
         </div>
@@ -81,7 +90,8 @@ class Article extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    article : state.article.data
+    article : state.article.data,
+    error: state.article.error
   }
 }
 

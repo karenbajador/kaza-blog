@@ -40,7 +40,7 @@ export default class Item extends Component {
     return (
         <div
           className='item'
-          style = {{'borderLeft': borderLeft}}
+          style={{'borderLeft': borderLeft}}
           onMouseEnter={this.onHover}
           onMouseLeave={this.onLeave}
         >

@@ -1,14 +1,18 @@
 const mongoose = require('mongoose')
+const mongoosePaginate = require('mongoose-paginate')
+
 const Schema = mongoose.Schema
+
 
 
 const postSchema = new Schema({
   title: String,
+  permalink: String,
   userId: { 
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  text: String,
+  body: String,
   tags: Array,
   comments: [{
         text: String,
@@ -30,8 +34,10 @@ const postSchema = new Schema({
   },
 })
 
+postSchema.plugin(mongoosePaginate)
 
 const Post = mongoose.model('Post', postSchema)
+
 
 export default Post
 

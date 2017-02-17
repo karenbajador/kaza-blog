@@ -7,9 +7,9 @@ import './Posts.css'
 
 class Posts extends Component {
 
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   static propTypes = {
     posts: PropTypes.array,
@@ -21,7 +21,7 @@ class Posts extends Component {
 
   render () {
 
-    const { posts } = this.props
+    const { posts, error } = this.props
 
     return (
 
@@ -30,13 +30,11 @@ class Posts extends Component {
         <div className='bodyContainer'>
           <h1>Posts Archive</h1>
 
-            {
-              (posts && posts.length > 0)
-                ? posts.map(post => {
-                    return <Post key={post.id} data={post} />
-                  })
-                : null
-            }
+            { (posts && posts.length > 0) && posts.map(post => {
+                    return <Post key={post._id} data={post} />
+                  }) }
+
+          <p>{ error }</p>
 
         </div>
         <div className='side' />
@@ -48,7 +46,8 @@ class Posts extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    posts : state.posts.data
+    posts : state.posts.posts,
+    error: state.posts.error
   }
 }
 

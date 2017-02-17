@@ -9,9 +9,9 @@ import './Home.css'
 
 class Home extends Component {
 
-  constructor(props) {
-    super(props)
-  }
+  // constructor(props) {
+  //   super(props)
+  // }
 
   static propTypes = {
     posts: PropTypes.array,
@@ -26,7 +26,7 @@ class Home extends Component {
 
   render () {
 
-    const { posts } = this.props
+    const { posts, error } = this.props
 
     const MAX_ARTICLES = 3
     const MAX_EXCERPT_WORDS = 80
@@ -35,31 +35,36 @@ class Home extends Component {
                         ? (posts.length >= MAX_ARTICLES) ? posts.slice(0,MAX_ARTICLES) : posts
                         : []
 
+    const CheckMore = (
+      <div className='checkMore'>
+        <Link to='/posts'>Check more posts <FaAngleDoubleRight/></Link>
+      </div>
+    )
+
     return (
+
       <div>
         <div className='header' />
         <div className='container home'>
           <div className='side' />
           <div className='body column'>
 
-            {
-              posts_home.length > 0
-                ? posts_home.map(post => {
+            { posts_home.length > 0 && posts_home.map(post => {
                     return <Item
-                             key={post.id}
+                             key={post._id}
                              data={post}
                              max_words={MAX_EXCERPT_WORDS}
                            />
-                  })
-                : null
-            }
+                  }) }
+
+            { posts_home.length > 0 && CheckMore }
+
+            <p>{ error }</p>
 
           </div>
           <div className='side' />
         </div>
-        <div className='checkMore'>
-          <Link to='/posts'>Check more posts <FaAngleDoubleRight/></Link>
-        </div>
+
       </div>
     )
   }
@@ -68,7 +73,8 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    posts : state.posts.data
+    posts : state.posts.posts,
+    error: state.posts.error
   }
 }
 

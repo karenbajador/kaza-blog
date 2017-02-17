@@ -7,10 +7,12 @@ import { postController } from './controllers'
 const app = express()
 
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 
-app.use('/posts', postController)
-app.use('/posts1', postController)
+app.use('/api/posts', postController)
+app.use('/api/article', postController)
+
 
 app.set('port', (process.env.PORT || 3001))
 
@@ -19,6 +21,10 @@ app.listen(app.get('port'), function() {
 })
 
 
+// // configure the app to use bodyParser()
+// app.use(bodyParser.urlencoded({
+//   extended: true
+// }));
 
 
 

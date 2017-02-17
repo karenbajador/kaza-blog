@@ -14,11 +14,14 @@ export default function reducer (state = initialState, action = {}) {
     case ACTIONS.LOAD_POSTS_SUCCEEDED:
       return {
         ...state,
-        data: action.posts
+        ...action.posts,
+        error: null
+
       }
     case ACTIONS.LOAD_POSTS_FAILED:
       return {
         ...state,
+        error: action.error
       }
     default:
       return state
